@@ -8,9 +8,9 @@ from datetime import timedelta
 
 class UserProfile(AbstractUser):
     # buildingCode - the code for which building you lived in
-    building_code = models.CharField(max_length=20, verbose_name='楼号')
-    floor_code = models.CharField(max_length=20, verbose_name='层号')
-    room_code = models.CharField(max_length=20, verbose_name='房号')
+    buildingCode = models.CharField(max_length=20, verbose_name='楼号')
+    floorCode = models.CharField(max_length=20, verbose_name='层号')
+    roomCode = models.CharField(max_length=20, verbose_name='房号')
 
     class Meta:
         db_table = 'Users'

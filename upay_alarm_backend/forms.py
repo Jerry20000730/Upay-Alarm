@@ -5,14 +5,14 @@ class loginForm(forms.Form):
     """
     form for login
     """
-    email = forms.EmailField(label="学校邮箱", required=True, error_message={'invalid': '请填写正确的邮箱地址'})
+    email = forms.EmailField(label="学校邮箱", required=True, error_messages={'invalid': '请填写正确的邮箱地址'})
     password = forms.CharField(required=True, widget=forms.PasswordInput(), min_length=6, error_messages={'invalid': '密码不得少于6位'})
 
 class registerForm(forms.Form):
     """
     form for registration
     """
-    email = forms.EmailField(required=True, error_message={'invalid': '请填写正确的邮箱地址'})
+    email = forms.EmailField(required=True, error_messages={'invalid': '请填写正确的邮箱地址'})
     password = forms.CharField(required=True, min_length=6, error_messages={'invalid': '密码不得少于6位'})
     rePassword = forms.CharField(required=True, min_length=6, error_messages={'invalid': '密码不得少于6位'})
 

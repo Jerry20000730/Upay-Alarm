@@ -1,3 +1,5 @@
+import re
+
 from django.contrib import auth
 from django.http import JsonResponse
 from django.views import View
@@ -9,6 +11,13 @@ from django.contrib.auth.hashers import make_password
 
 from .utils.email_util import send_email
 
+# check if the domain name is nottingham
+def checkEmail(email):
+    regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@][nottingham]+((.edu.cn)|(.ac.uk))'
+    if (re.search(regex, email)):
+        return True
+    else:
+        return False
 
 # Create your views here.
 
@@ -39,6 +48,13 @@ class LoginView(View):
         if form.is_valid():
             # compare password
             email = form.cleaned_data['email']
+            if not checkEmail(email=email):
+                return JsonResponse({
+                    "statusCode": -1,
+                    "errorCode": "WRONG_EMAIL_DOMAIN",
+                    "message": "please register using school's email address"
+                })
+
             pwd = form.cleaned_data['password']
             authentication = CustomBackend()
             user = authentication.authenticate(request, username=email, password=pwd)
