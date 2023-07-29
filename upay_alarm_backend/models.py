@@ -15,6 +15,7 @@ class UserProfile(AbstractUser):
     class Meta:
         db_table = 'Users'
         verbose_name = '用户信息'
+        verbose_name_plural = verbose_name
 
 
 class EmailVeriRecord(models.Model):

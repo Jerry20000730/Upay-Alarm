@@ -35,7 +35,7 @@ def send_email(desc_email, send_type='register'):
         if send_type == 'register':
             send_status = send_mail(
                 subject="[upay_alarm] 验证您的邮箱 Verify Your Email Address",
-                message="尊敬的用户您好：\n        感谢您注册upay_alarm，请确认以下注册信息无误。\n        您的注册邮箱为：{}\n        您的验证码为：{}\n此邮件为自动发送，如果您发现您并没有注册本服务，请主动忽略此邮件；请勿回复此邮件，感谢配合！\nDear user, \n        Thank you for registering the upay_alarm, please check the following information due to potential security issues.\n        Registration email: {}\n        Verification code: {}\n        This is an automatic email, if you did not register for this service, please kindly ignore this email. Please do not reply to this email. Thank you for your cooperation. \nRegards,\nupay_alarm".format(desc_email, email.code, desc_email, email.code),
+                message="尊敬的用户您好：\n\n        感谢您注册upay_alarm，请确认以下注册信息无误：\n\n        您的注册邮箱为：{}\n        您的验证码为：{}\n\n        此邮件为自动发送，如果您发现您并没有注册本服务，请主动忽略此邮件；请勿回复此邮件，感谢配合！\n\nDear user, \n        Thank you for registering the upay_alarm, please check the following information due to potential security issues:\n\n        Registration email: {}\n        Verification code: {}\n\n        This is an automatic email, if you did not register for this service, please kindly ignore this email. Please do not reply to this email. Thank you for your cooperation. \n\nKind regards,\nupay_alarm".format(desc_email, email.code, desc_email, email.code),
                 from_email=settings.EMAIL_FROM,
                 recipient_list=[desc_email],
             )
